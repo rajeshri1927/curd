@@ -1,9 +1,10 @@
 //use path module
 const path = require('path');
+//connection file 
+const conn = require('./include/db.js');
 //use express module
 const express = require('express');
 //use hbs view engine
-//const hbs = require('hbs');
 //use bodyParser middleware
 const bodyParser = require('body-parser');
 //use mysql database
@@ -25,18 +26,18 @@ var upload = multer({ storage : storage}).single('product_image');
 
 const app = express();
 //Create Connection
-const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'crud_db'
-});
+// const conn = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'crud_db'
+// });
 
 //connect to database
-conn.connect((err) =>{
-  if(err) throw err;
-  console.log('Mysql Connected...');
-});
+// conn.connect((err) =>{
+//   if(err) throw err;
+//   console.log('Mysql Connected...');
+// });
 //set views file
 app.set('views',path.join(__dirname,'views'));
 // app.use(bodyParser.json());

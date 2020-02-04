@@ -24,9 +24,9 @@
             <td>{{ product_id }}</td>
             <td>{{ product_name }}</td>
             <td>{{ product_price }}</td>
-            <td><img src="./upload/{{ product_image}}" height="50px" width="50px"></td>
+            <td><center><img src="./upload/{{ product_image}}" height="50px" width="50px"></center></td>
             <td>
-              <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ product_id }}" data-product_name="{{ product_name }}" data-product_price="{{ product_price }}" data-product-image="{{ product_image }}" >Edit</a>
+              <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ product_id }}" data-product_name="{{ product_name }}" data-product_price="{{ product_price }}" data-product-image="{{ product_image }}" >Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ product_id }}">Delete</a>
             </td>
           </tr>
