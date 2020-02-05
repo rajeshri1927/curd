@@ -1,8 +1,6 @@
 const express = require('express');
 const conn = require('./include/db.js');
 const upload = require('./fileupload.js');
-// const router = require('./index.js');
-//const router = require('./routes/index.js');
 const router = express.Router();
 router.get('/',(req, res) => {
   //console.log(req);
