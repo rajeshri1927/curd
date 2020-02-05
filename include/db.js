@@ -12,9 +12,9 @@ const conn = mysql.createConnection({
 
 });
 
- const conn.connect(function(err) {
-  if(err) throw err;
-//  console.log('Database connection Success');
-});
+//  const conn.connect(function(err) {
+//   if(err) throw err;
+// //  console.log('Database connection Success');
+// });
 
-module.exports = conn;
+// module.exports = conn;
