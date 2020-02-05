@@ -35,6 +35,20 @@
       </table>
     </div>
     <!-- Add New Product Modal-->
+    {{# if success }}
+        <section class="success">
+            <h2>Successful Validation!</h2>
+        </section>
+    {{ else }}
+        {{# if errors }}
+            <section class="errors">
+                <ul>
+                    {{# each errors }}
+                        <li>{{ this.msg }}</li>
+                    {{/each}}
+                </ul>
+            </section>
+        {{/if}}
     <form action="/save" method="post" enctype="multipart/form-data">
       <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -47,22 +61,15 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <input type="text" name="product_name" class="form-control" placeholder="Product Name" required>
+                <input type="text" name="product_name" class="form-control" placeholder="Product Name">
               </div>
               <div class="form-group">
                 <input type="text" name="product_price" class="form-control" placeholder="Price" required>
               </div>
               <div class="form-group">
                 <input type="file" onchange="readURL(this);"  class="add_image" name="product_image" class="form-control" placeholder="image" required>
-                 <img id="profile-img-tag1" src="#" alt="your image" />
+                 <img id="profile-img-tag1" src="#" alt="your image" height="100" />
               </div>
-<!--               <div class="form-group">
-                <select class="form-control" name="gender">
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -72,6 +79,7 @@
         </div>
       </div>
     </form>
+    {{/if}}
     <!-- Edit Form -->
     <form action="/update" method="post" enctype="multipart/form-data">
       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,18 +99,9 @@
                 <input type="text" name="product_price" class="form-control price" placeholder="Price" required>
               </div>
               <div class="form-group">
-              <!--   <div class="form-group image-div">
-                </div> -->
                 <input type="file" name="product_image" class="form-control product_image" placeholder="image" required>
                 <img src="#" id="profile-img-tag" width="200px"/>
               </div>
-          <!--     <div class="form-group">
-                <select class="form-control product_image">
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div> -->
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id" class="product_id">
@@ -136,61 +135,6 @@
     </form>
     <script src="/assets/js/jquery-3.3.1.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
-    <script>
-      $(document).ready(function(){
-        //showing data to modal for edit record
-        $('#mytable').on('click','.edit',function(){
-          var product_id    = $(this).data('id');
-          var product_name  = $(this).data('product_name');
-          var product_price = $(this).data('product_price');
-          var product_image = $(this).data('product-image');
-          //alert(product_image);
-          $('#EditModal').modal('show');
-          $('.product_name').val(product_name);
-          $('.price').val(product_price);
-          // $('.product_image').val(product_image);
-          // $('#profile-img-tag').src = "./upload/" + product_image;
-          document.getElementById("profile-img-tag").src = "./upload/" + product_image;
-          console.log("'./upload/" + product_image + "'");
-          //html('<img src="./upload/'+ product_image+ '" alt="test" height="100" width="150">');
-          $('.product_id').val(product_id);
-        });
-          $('#mytable').on('click','.delete',function(){
-            var product_id = $(this).data('id');
-            $('#DeleteModal').modal('show');
-            $('.product_id2').val(product_id);
-        });
-        });
-    </script>
-    <script type="text/javascript">
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                   document.getElementById("profile-img-tag").src = e.target.result;
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-       $(".product_image").change(function(){
-        //alert('test');
-        readURL(this);
-        });
-       function readURL2(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                   document.getElementById("profile-img-tag1").src = e.target.result;
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-       $(".add_image").change(function(){
-        //alert('test');
-        readURL2(this);
-        });
-
-    </script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
